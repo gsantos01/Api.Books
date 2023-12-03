@@ -27,7 +27,7 @@ Use o endpoint `/ping` para verificação de saúde da aplicação.
 
 Para a documentação da api, é utilizado o [Swagger](https://swagger.io/).
 
-![swagger](./docs/images/swagger.png)
+![swagger](./Docs/Images/swagger.png)
 
 Por padrão a documentação está disponível no endpoint `/swagger/index.html` .
 
