@@ -1,5 +1,5 @@
 ﻿using Api.Books.Core.Entities;
-using Api.Books.Core.Interfaces;
+using Api.Books.Core.Interfaces.Aplications;
 using Api.Books.Interfaces.Repositories;
 
 namespace Api.Books.Core.Aplications
