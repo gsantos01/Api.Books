@@ -5,19 +5,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Books.Infrastructure.Repositories
 {
-    public class BookRepository : Repository<Book>, IBookRepository
+    public class BookRepository(BooksDbContext dbContext) : Repository<Book>(dbContext), IBookRepository
     {
-        private BooksDbContext _dbContext;
-        public BookRepository(BooksDbContext dbContext) : base(dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        private readonly BooksDbContext _dbContext = dbContext;
 
         public async Task<Book?> GetBookAndAuthorsByIdAsync(int id)
         {
             var book = await _dbContext.Books
                 .Include(p => p.Authors)
                 .FirstOrDefaultAsync(p => p.Id == id);
+
+            //TODO: Correção no mapeamento para remover esse paliativo
+            if (book != null && book.Authors != null) {
+                foreach (var author in book.Authors) {
+                    author.Books = null;
+                }
+            }
 
             return book;
         }

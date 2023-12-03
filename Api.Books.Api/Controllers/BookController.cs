@@ -1,6 +1,5 @@
 ﻿using Api.Books.Api.DTOs;
 using Api.Books.Api.Extensions;
-using Api.Books.Core.Entities;
 using Api.Books.Core.Interfaces.Aplications;
 using Microsoft.AspNetCore.Mvc;
 
@@ -56,7 +55,7 @@ namespace Api.Books.Api.Controllers
                     return BadRequest("Dados invalidos");
                 }
                 var bookId = await _bookApplication.Create(newBook);
-                return Created();
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -77,7 +76,7 @@ namespace Api.Books.Api.Controllers
                 }
 
                 await _bookApplication.Update(bookToEdit);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {
