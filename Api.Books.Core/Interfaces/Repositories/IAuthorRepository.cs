@@ -1,9 +1,10 @@
 ﻿using Api.Books.Core.Entities;
+using Api.Books.Core.Interfaces.Repositories;
 
 namespace Api.Books.Interfaces.Repositories
 {
-    public interface IAuthorRepository
+    public interface IAuthorRepository : IRepository<Author>
     {
-        IQueryable<Author> Authors { get; }
+        Task MergeAuthor(Author author);
     }
 }
