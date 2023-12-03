@@ -1,3 +1,5 @@
+using Api.Books.Core.Aplications;
+using Api.Books.Core.Interfaces.Aplications;
 using Api.Books.Infrastructure.Context;
 using Api.Books.Infrastructure.Repositories;
 using Api.Books.Interfaces.Repositories;
@@ -10,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+
+builder.Services.AddScoped<IBookApplication, BookApplication>();
 
 builder.Services.AddDbContext<BooksDbContext>(options =>
 {
